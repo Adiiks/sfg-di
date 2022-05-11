@@ -5,11 +5,13 @@ import com.adrian.sfgdi.repositories.EnglishGreetingRepository;
 import com.adrian.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.adrian.sfgdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import pl.adrian.pets.PetService;
 import pl.adrian.pets.PetServiceFactory;
 
-@PropertySource("classpath:datasource.properties")
 @Configuration
 public class GreetingServiceConfig {
 
