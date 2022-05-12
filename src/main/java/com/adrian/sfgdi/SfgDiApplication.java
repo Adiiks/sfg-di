@@ -1,6 +1,7 @@
 package com.adrian.sfgdi;
 
 import com.adrian.sfgdi.config.SfgConfiguration;
+import com.adrian.sfgdi.config.SfgConstructorConfig;
 import com.adrian.sfgdi.controllers.*;
 import com.adrian.sfgdi.datasource.FakeDataSource;
 import com.adrian.sfgdi.services.PrototypeBean;
@@ -66,6 +67,12 @@ public class SfgDiApplication {
 		System.out.println(sfgConfiguration.getUsername());
 		System.out.println(sfgConfiguration.getPassword());
 		System.out.println(sfgConfiguration.getJdbcUrl());
+
+		System.out.println("----- Constructor Binding -----");
+		SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+		System.out.println(sfgConstructorConfig.getUsername());
+		System.out.println(sfgConstructorConfig.getPassword());
+		System.out.println(sfgConstructorConfig.getJdbcUrl());
 	}
 
 }

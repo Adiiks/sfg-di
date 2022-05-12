@@ -4,6 +4,7 @@ import com.adrian.sfgdi.datasource.FakeDataSource;
 import com.adrian.sfgdi.repositories.EnglishGreetingRepository;
 import com.adrian.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.adrian.sfgdi.services.*;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -11,15 +12,16 @@ import org.springframework.context.annotation.Profile;
 import pl.adrian.pets.PetService;
 import pl.adrian.pets.PetServiceFactory;
 
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @Configuration
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration) {
+    FakeDataSource fakeDataSource(SfgConstructorConfig sfgConstructorConfig) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(sfgConfiguration.getUsername());
-        fakeDataSource.setPassword(sfgConfiguration.getPassword());
-        fakeDataSource.setJdbcUrl(sfgConfiguration.getJdbcUrl());
+        fakeDataSource.setUsername(sfgConstructorConfig.getUsername());
+        fakeDataSource.setPassword(sfgConstructorConfig.getPassword());
+        fakeDataSource.setJdbcUrl(sfgConstructorConfig.getJdbcUrl());
         return fakeDataSource;
     }
 
